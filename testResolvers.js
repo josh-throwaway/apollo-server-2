@@ -1,3 +1,5 @@
+const createSlug = require("./util/createSlug.js");
+
 const resolvers = {
   Query: {
     testUser(root, { id }, { models }) {
@@ -33,11 +35,16 @@ const resolvers = {
     },
 
     createLink(root, { url, slug }, { models }) {
-      if (slug.length < 4) {
+      if (slug && slug.length < 4) {
         // this is returning null when hit instead of string,
         // would love to know why
         return "Slug must be a minimum of 4 alpha-numeric characters";
       }
+
+      if (!slug) {
+        slug = createSlug();
+      }
+
       return models.Link.create({
         url,
         slug

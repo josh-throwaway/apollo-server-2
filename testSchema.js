@@ -23,7 +23,7 @@ const typeDefs = gql`
   type Mutation {
     createTestUser(name: String!): TestUser!
 
-    createLink(url: String!, slug: String!): Link!
+    createLink(url: String!, slug: String): Link!
   }
 `;
 
