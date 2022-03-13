@@ -17,6 +17,7 @@ const typeDefs = gql`
     allTestUsers: [TestUser!]
 
     allLinks: [Link!]
+    linkBySlug(slug: String!): Link!
   }
 
   type Mutation {

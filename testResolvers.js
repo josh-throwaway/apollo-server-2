@@ -14,6 +14,14 @@ const resolvers = {
 
     allLinks(root, args, { models }) {
       return models.Link.findAll();
+    },
+
+    linkBySlug(root, { slug }, { models }) {
+      return models.Link.findOne({
+        where: {
+          slug
+        }
+      });
     }
   },
 
